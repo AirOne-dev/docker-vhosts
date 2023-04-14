@@ -6,9 +6,9 @@ docker-virtual-hosts sets up a container running a web service listing your dock
 
 To run it:
 
-    $ docker-compose up -d
+    $ docker compose up -d
 
-If `nginx-proxy` is running and listening on 127.0.0.1, you can visit http://dev.127.0.0.1.xip.io/ to see your other(s) virtual host(s).
+Visit http://index.127.0.0.1.nip.io/ to see your other(s) virtual host(s).
 
 Every containers with a `VIRTUAL_HOST=...` env var set should be present. You can also add labels to your containers with `VIRTUAL_LABELS=some spaces separated labels`. You we will then be able to filter yout vhosts using those labels.
 
