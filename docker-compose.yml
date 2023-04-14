@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  docker-vhosts:
+    build: . 
+    image: erwan/docker-vhosts 
+    volumes: 
+      - /var/run/docker.sock:/tmp/docker.sock 
+    environment:
+      VIRTUAL_HOST: 'index.127.0.0.1.nip.io'
+    restart: always
+    networks:
+      - reverse-proxy
+
+  reverse-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    restart: always
+    networks:
+      - reverse-proxy
+
+networks:
+  reverse-proxy:
+    name: reverse-proxy
